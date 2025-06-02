@@ -32,9 +32,9 @@ def on_auto_calculate():
         target_baud = float(entry_baud.get())
         row_limit = int(entry_row_limit.get())
         if row_limit <= 0 or row_limit > 50:
-            raise ValueError("顯示筆數必須是 1~50 的整數")
+            raise ValueError("Display row no. must be 1 ~ 50")
 
-        label_status.config(text="計算中，請稍候...", fg="blue")
+        label_status.config(text="please wait...", fg="blue")
         root.update_idletasks()
 
         def update_progress(pct):
@@ -53,11 +53,11 @@ def on_auto_calculate():
             if row["error_percent"] < 1.0:
                 tree.item(iid, tags=("highlight",))
 
-        label_status.config(text="完成！", fg="green")
+        label_status.config(text="Finish！", fg="green")
         progress["value"] = 0
 
     except ValueError as e:
-        messagebox.showerror("輸入錯誤", f"請確認輸入正確：\n{e}")
+        messagebox.showerror("Input error", f"Please make sure input data is correct：\n{e}")
 
 def on_manual_calculate():
     try:
@@ -67,18 +67,18 @@ def on_manual_calculate():
         NSPB = int(combo_NSPB.get().split()[0])
         BRP0 = int(entry_BRP0.get())
         if not (0 <= BRP0 <= 65535):
-            raise ValueError("BRP0 超出範圍 (0 ~ 65535)")
+            raise ValueError("BRP0 over range (0 ~ 65535)")
         target_baud = float(entry_manual_baud.get())
         baud_rate = base_freq / LPRS / (BRP0 + 1) / NSPB
         error = abs((baud_rate - target_baud) / target_baud) * 100
         label_manual_result.config(
-            text=f"Baud Rate: {baud_rate:.2f}，誤差: {error:.4f}%", fg="green"
+            text=f"Baud Rate: {baud_rate:.2f}，Error Rate: {error:.4f}%", fg="green"
         )
     except Exception as e:
-        messagebox.showerror("輸入錯誤", f"請確認輸入正確：\n{e}")
+        messagebox.showerror("Input error", f"Please make sure input data is correct：\n{e}")
 
 root = tk.Tk()
-root.title("RH850 UART Baud Rate 計算工具")
+root.title("RH850 UART Baud Rate calculate")
 root.geometry("800x480")
 
 # Base Frequency 共用輸入區
@@ -100,22 +100,22 @@ notebook.add(tab_auto, text="Auto Calculate")
 frame_top = tk.Frame(tab_auto)
 frame_top.pack(pady=5)
 
-tk.Label(frame_top, text="目標 Baud Rate:").pack(side=tk.LEFT, padx=5)
+tk.Label(frame_top, text="Target Baud Rate:").pack(side=tk.LEFT, padx=5)
 entry_baud = tk.Entry(frame_top, width=12)
 entry_baud.insert(0, "460800")
 entry_baud.pack(side=tk.LEFT, padx=5)
 
-tk.Label(frame_top, text="顯示筆數:").pack(side=tk.LEFT, padx=5)
+tk.Label(frame_top, text="Display row:").pack(side=tk.LEFT, padx=5)
 entry_row_limit = tk.Entry(frame_top, width=5)
 entry_row_limit.insert(0, "15")  # 預設15筆
 entry_row_limit.pack(side=tk.LEFT, padx=5)
 
-tk.Button(frame_top, text="開始計算", command=on_auto_calculate).pack(side=tk.LEFT, padx=5)
+tk.Button(frame_top, text="Calculate!", command=on_auto_calculate).pack(side=tk.LEFT, padx=5)
 
 progress = ttk.Progressbar(tab_auto, length=300, mode="determinate")
 progress.pack(pady=5)
 
-columns = ("LPRS", "BRP0", "NSPB", "Baud Rate", "誤差 (%)")
+columns = ("LPRS", "BRP0", "NSPB", "Baud Rate", "error rate(%)")
 tree = ttk.Treeview(tab_auto, columns=columns, show="headings", height=15)
 for col in columns:
     tree.heading(col, text=col)
@@ -164,7 +164,7 @@ entry_manual_baud = tk.Entry(frame_manual, width=15)
 entry_manual_baud.insert(0, "460800")
 entry_manual_baud.grid(row=3, column=1)
 
-tk.Button(tab_manual, text="計算", command=on_manual_calculate).pack(pady=5)
+tk.Button(tab_manual, text="Calculate!", command=on_manual_calculate).pack(pady=5)
 label_manual_result = tk.Label(tab_manual, text="", fg="blue", font=("Arial", 10))
 label_manual_result.pack()
 
@@ -175,12 +175,12 @@ notebook.add(tab_best, text="Best Match Finder")
 frame_best_input = tk.Frame(tab_best)
 frame_best_input.pack(pady=10)
 
-tk.Label(frame_best_input, text="目標 Baud Rate:").grid(row=0, column=0, padx=5)
+tk.Label(frame_best_input, text="Target Baud Rate:").grid(row=0, column=0, padx=5)
 entry_best_baud = tk.Entry(frame_best_input, width=10)
 entry_best_baud.insert(0, "460800")
 entry_best_baud.grid(row=0, column=1, padx=5)
 
-tk.Label(frame_best_input, text="可接受誤差 (%):").grid(row=0, column=2, padx=5)
+tk.Label(frame_best_input, text="error rate(%):").grid(row=0, column=2, padx=5)
 entry_best_error = tk.Entry(frame_best_input, width=10)
 entry_best_error.insert(0, "1")
 entry_best_error.grid(row=0, column=3, padx=5)
@@ -215,28 +215,31 @@ def find_best_match():
 
                     # 可加入這裡的條件式提早結束 NSPB loop
 
-                if best_combo and best_combo[-1] <= max_error:
+                # if best_combo and best_combo[-1] <= max_error:
+                if best_combo:
                     best_results.append(best_combo)
 
                 progress_best["value"] = idx + 1
                 progress_best.update_idletasks()
 
             # 結果顯示
-            for result in sorted(best_results, key=lambda x: x[-1]):
+            # for result in sorted(best_results, key=lambda x: x[-1]):
+            for result in sorted(best_results, key=lambda x: -x[0]):  # x[0] 是 base_freq
+                tags = ("error",) if result[5] > max_error else ()
                 tree_best.insert("", "end", values=(
                     f"{result[0]:,}", result[1], result[2], result[3],
                     f"{result[4]:.2f}", f"{result[5]:.4f}%"
-                ))
+                ), tags=tags)
 
             progress_best["value"] = 0
 
         threading.Thread(target=worker).start()
 
     except Exception as e:
-        messagebox.showerror("錯誤", str(e))
+        messagebox.showerror("Huh?", str(e))
 
 
-tk.Button(tab_best, text="尋找最佳解", command=find_best_match).pack(pady=5)
+tk.Button(tab_best, text="Find best match!", command=find_best_match).pack(pady=5)
 
 progress_best = ttk.Progressbar(tab_best, orient="horizontal", mode="determinate")
 progress_best.pack(fill="x", padx=10, pady=5)
@@ -251,6 +254,8 @@ for col in ("Base Freq", "LPRS", "BRP0", "NSPB", "Baud", "Error"):
     tree_best.column(col, anchor="center", width=110)
 
 tree_best.pack(side=tk.LEFT, fill="both", expand=True)
+
+tree_best.tag_configure("error", background="#ffe5e5")  # 淡紅色
 
 scrollbar_best = ttk.Scrollbar(frame_best_tree, orient="vertical", command=tree_best.yview)
 scrollbar_best.pack(side=tk.RIGHT, fill="y")
