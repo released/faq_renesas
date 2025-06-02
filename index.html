@@ -27,6 +27,66 @@
 <p><a href="https://released.github.io/">return to index</a></p>
 <p><a id="article_top" href=""></a></p>
 <h1 id="faq-renesas">FAQ (Renesas) </h1>
+<ul>
+<li><a href="#calculate_uart_baud_rate">How to get RLIN3 (UART) lowest error rate</a></li>
+</ul>
+<hr>
+<p><a id="calculate_uart_baud_rate" href=""></a></p>
+<h1 id="how-to-get-the-lowest-error-rate-according-to-current-uart-baud-rate">How to get the lowest error rate according to current UART baud rate </h1>
+<ul>
+<li><strong>RLIN3 (UART) clock max speed</strong></li>
+</ul>
+<p><img src="img/RLIN3_clock_speed.jpg" alt=""></p>
+<ul>
+<li><strong>RLIN3 (UART) baud rate calculate formula</strong></li>
+</ul>
+<p><img src="img/RLIN3_uart_baud_rate_formula.jpg" alt=""></p>
+<p><a href="#article_top">back to top</a></p>
+<hr>
+<p><a href="./RH850_uart_gui.pyw">download(python)</a></p>
+<ul>
+<li>
+<p><strong>use tab 3:Best Match Finder, to get best match</strong></p>
+<ul>
+<li>input target baud rate</li>
+<li>input target error rate</li>
+<li>tool will try to find best match , base on freq :
+<ul>
+<li>8MHz,16MHz,20MHz,24MHz,40MHz,80MHz,96MHz,120MHz</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="img/RLIN3_UART_tab03.jpg" alt=""></p>
+<ul>
+<li>
+<p><strong>use tab 2:Manual Calculate, to calculate error rate</strong></p>
+<ul>
+<li>input target Base Frequency</li>
+<li>input target LPRS/BRP0/NSPB</li>
+<li>input target baud rate</li>
+</ul>
+</li>
+</ul>
+<p><img src="img/RLIN3_UART_tab02.jpg" alt=""></p>
+<ul>
+<li>
+<p><strong>use tab 1:Auto Calculate, to calculate error rate</strong></p>
+<ul>
+<li>input target Base Frequency</li>
+<li>input target baud rate</li>
+<li>input target display result</li>
+</ul>
+</li>
+</ul>
+<p>below is error rate result , when Base Frequency:40MHz<br>
+<img src="img/RLIN3_UART_tab01_40MHz.jpg" alt=""></p>
+<p>below is error rate result , when Base Frequency:24MHz<br>
+<img src="img/RLIN3_UART_tab01_24MHz.jpg" alt=""></p>
+<p>below is error rate result , when Base Frequency:16MHz<br>
+<img src="img/RLIN3_UART_tab01_16MHz.jpg" alt=""></p>
+<p><a href="#article_top">back to top</a></p>
 <hr>
 
       </div>
