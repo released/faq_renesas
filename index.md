@@ -28,7 +28,7 @@
 
 ---
 
-[download(python)](./RH850_uart_gui.pyw)
+[download(python)](python/RH850_uart_gui.pyw)
 
 * __use tab 3:Best Match Finder, to get best match__
 

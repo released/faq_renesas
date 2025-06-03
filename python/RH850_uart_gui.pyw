@@ -172,6 +172,17 @@ label_manual_result.pack()
 tab_best = tk.Frame(notebook)
 notebook.add(tab_best, text="Best Match Finder")
 
+frame_freq_check = tk.LabelFrame(tab_best, text="Select Base Frequencies (Hz)")
+frame_freq_check.pack(padx=10, pady=5, fill="x")
+
+# 建立變數 + checkbox 物件
+freq_vars = {}
+for freq in sorted(FREQ_LIST, reverse=True):  # 高到低排列
+    var = tk.IntVar(value=1 if freq <= 40000000 else 0)  # 40MHz(含)以下預設打勾
+    cb = tk.Checkbutton(frame_freq_check, text=f"{freq // 1_000_000} MHz", variable=var)
+    cb.pack(side=tk.LEFT, padx=5, pady=2)
+    freq_vars[freq] = var
+
 frame_best_input = tk.Frame(tab_best)
 frame_best_input.pack(pady=10)
 
@@ -196,7 +207,12 @@ def find_best_match():
         def worker():
             best_results = []
 
-            for idx, freq in enumerate(FREQ_LIST):
+            # 取得使用者勾選的頻率清單（由高到低排序）
+            selected_freqs = [freq for freq, var in freq_vars.items() if var.get()]
+            selected_freqs.sort(reverse=True)
+
+            # for idx, freq in enumerate(FREQ_LIST):
+            for idx, freq in enumerate(selected_freqs):            
                 min_error = float("inf")
                 best_combo = None
 
