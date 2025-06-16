@@ -6,7 +6,9 @@
 # FAQ (Renesas)
 
 
-* [How to get RLIN3 (UART) lowest error rate](#calculate_uart_baud_rate)
+* [How to get RH850 RLIN3 (UART) lowest error rate](#calculate_uart_baud_rate)
+
+* [How to get RL78 slave PWM TDR/duty value](#calculate_RL_78_pwm_duty)
 
 
 ---
@@ -15,11 +17,11 @@
 
 # How to get the lowest error rate according to current UART baud rate
 
-* __RLIN3 (UART) clock max speed__
+* __RH850 RLIN3 (UART) clock max speed__
 
 ![](img/RLIN3_clock_speed.jpg)
 
-* __RLIN3 (UART) baud rate calculate formula__
+* __RH850 RLIN3 (UART) baud rate calculate formula__
 
 ![](img/RLIN3_uart_baud_rate_formula.jpg)
 
@@ -68,4 +70,35 @@ below is error rate result , when Base Frequency:16MHz
 ---
 
 
+<a id="calculate_RL_78_pwm_duty"></a>
 
+# How to get RL78 slave PWM TDR/duty value 
+
+* __RL78 TDR formula__
+
+![](img/RL78_PWM_0.jpg)
+
+
+[download(python)](./python/RL78_pwm_gui.pyw)
+
+
+* __use tab 1:manual input__
+
+    * input pwm master TDR value (hex)
+    * input pwm slave TDR value (hex) , to calculate duty
+    * input pwm slave duty , to calculate slave TDR
+
+![](img/RL78_PWM_1.jpg)
+
+![](img/RL78_PWM_2.jpg)
+
+
+* __use tab 2:calculate all TDR/duty value__
+
+    * input pwm master TDR value (hex)
+
+![](img/RL78_PWM_3.jpg)
+
+[back to top](#article_top)   
+
+---

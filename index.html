@@ -28,17 +28,22 @@
 <p><a id="article_top" href=""></a></p>
 <h1 id="faq-renesas">FAQ (Renesas) </h1>
 <ul>
-<li><a href="#calculate_uart_baud_rate">How to get RLIN3 (UART) lowest error rate</a></li>
+<li>
+<p><a href="#calculate_uart_baud_rate">How to get RH850 RLIN3 (UART) lowest error rate</a></p>
+</li>
+<li>
+<p><a href="#calculate_RL_78_pwm_duty">How to get RL78 slave PWM TDR/duty value</a></p>
+</li>
 </ul>
 <hr>
 <p><a id="calculate_uart_baud_rate" href=""></a></p>
 <h1 id="how-to-get-the-lowest-error-rate-according-to-current-uart-baud-rate">How to get the lowest error rate according to current UART baud rate </h1>
 <ul>
-<li><strong>RLIN3 (UART) clock max speed</strong></li>
+<li><strong>RH850 RLIN3 (UART) clock max speed</strong></li>
 </ul>
 <p><img src="img/RLIN3_clock_speed.jpg" alt=""></p>
 <ul>
-<li><strong>RLIN3 (UART) baud rate calculate formula</strong></li>
+<li><strong>RH850 RLIN3 (UART) baud rate calculate formula</strong></li>
 </ul>
 <p><img src="img/RLIN3_uart_baud_rate_formula.jpg" alt=""></p>
 <p><a href="#article_top">back to top</a></p>
@@ -86,6 +91,36 @@
 <img src="img/RLIN3_UART_tab01_24MHz.jpg" alt=""></p>
 <p>below is error rate result , when Base Frequency:16MHz<br>
 <img src="img/RLIN3_UART_tab01_16MHz.jpg" alt=""></p>
+<p><a href="#article_top">back to top</a></p>
+<hr>
+<p><a id="calculate_RL_78_pwm_duty" href=""></a></p>
+<h1 id="how-to-get-rl78-slave-pwm-tdrduty-value">How to get RL78 slave PWM TDR/duty value </h1>
+<ul>
+<li><strong>RL78 TDR formula</strong></li>
+</ul>
+<p><img src="img/RL78_PWM_0.jpg" alt=""></p>
+<p><a href="./python/RL78_pwm_gui.pyw">download(python)</a></p>
+<ul>
+<li>
+<p><strong>use tab 1:manual input</strong></p>
+<ul>
+<li>input pwm master TDR value (hex)</li>
+<li>input pwm slave TDR value (hex) , to calculate duty</li>
+<li>input pwm slave duty , to calculate slave TDR</li>
+</ul>
+</li>
+</ul>
+<p><img src="img/RL78_PWM_1.jpg" alt=""></p>
+<p><img src="img/RL78_PWM_2.jpg" alt=""></p>
+<ul>
+<li>
+<p><strong>use tab 2:calculate all TDR/duty value</strong></p>
+<ul>
+<li>input pwm master TDR value (hex)</li>
+</ul>
+</li>
+</ul>
+<p><img src="img/RL78_PWM_3.jpg" alt=""></p>
 <p><a href="#article_top">back to top</a></p>
 <hr>
 
