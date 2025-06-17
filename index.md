@@ -87,10 +87,13 @@ below is error rate result , when Base Frequency:16MHz
     * input pwm master TDR value (hex)
     * input pwm slave TDR value (hex) , to calculate duty
     * input pwm slave duty , to calculate slave TDR
+    * select check box , to enable auto calculate master TDR
 
 ![](img/RL78_PWM_1.jpg)
-
+    
 ![](img/RL78_PWM_2.jpg)
+    
+![](img/RL78_PWM_2_1.jpg)
 
 
 * __use tab 2:calculate all TDR/duty value__
