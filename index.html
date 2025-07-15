@@ -34,6 +34,9 @@
 <li>
 <p><a href="#calculate_RL_78_pwm_duty">How to get RL78 slave PWM TDR/duty value</a></p>
 </li>
+<li>
+<p><a href="#notice_RH850_RL78_CAN">Notice about RH850/RL78 CAN</a></p>
+</li>
 </ul>
 <hr>
 <p><a id="calculate_uart_baud_rate" href=""></a></p>
@@ -125,6 +128,224 @@
 <p><img src="img/RL78_PWM_3.jpg" alt=""></p>
 <p><a href="#article_top">back to top</a></p>
 <hr>
+<p><a id="notice_RH850_RL78_CAN" href=""></a></p>
+<h1 id="notice-about-rh850rl78-can-module">Notice about RH850/RL78 CAN module </h1>
+<span style="color:#FF0000">
+<b>* enable TDC when data phase with high baud rate</b><br><br>
+</span>
+<ul>
+<li><strong>TDC_in_RL78</strong></li>
+</ul>
+<p><img src="img/RL78_CAN_TDC_1.jpg" alt=""></p>
+<ul>
+<li><strong>TDC_in_RH850</strong></li>
+</ul>
+<p><img src="img/RH850_CAN_TDC_1.jpg" alt=""></p>
+<p><a href="#article_top">back to top</a></p>
+<hr>
+<ul>
+<li><strong>Nominal Bit Timing_in_RH850</strong></li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>NTSEG1[6:0] Bits : 4 to 128 Tq
+NTSEG2[4:0] Bits : 2 Tq to 32 Tq
+NSJW[4:0] Bits : 1 to 32 Tq
+</code></pre><p><img src="img/RH850_CAN_NOMINAL_BIT_1.jpg" alt=""><br>
+<img src="img/RH850_CAN_NOMINAL_BIT_2.jpg" alt=""><br>
+<img src="img/RH850_CAN_NOMINAL_BIT_3.jpg" alt=""><br>
+<img src="img/RH850_CAN_NOMINAL_BIT_4.jpg" alt=""><br>
+<img src="img/RH850_CAN_NOMINAL_BIT_5.jpg" alt=""><br>
+<img src="img/RH850_CAN_NOMINAL_BIT_6.jpg" alt=""></p>
+<p><a href="#article_top">back to top</a></p>
+<hr>
+<ul>
+<li><strong>Data Bit Timing_in_RH850</strong></li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>DTSEG1[3:0] Bits : 2 to 16 Tq
+DTSEG2[2:0] Bits : 2 to 8 Tq
+DSJW[2:0] Bits Bits : 1 to 8 Tq
+</code></pre><p><img src="img/RH850_CAN_DATA_BIT_1.jpg" alt=""><br>
+<img src="img/RH850_CAN_DATA_BIT_2.jpg" alt=""><br>
+<img src="img/RH850_CAN_DATA_BIT_3.jpg" alt=""><br>
+<img src="img/RH850_CAN_DATA_BIT_4.jpg" alt=""><br>
+<img src="img/RH850_CAN_DATA_BIT_5.jpg" alt=""><br>
+<img src="img/RH850_CAN_DATA_BIT_6.jpg" alt=""></p>
+<p><a href="#article_top">back to top</a></p>
+<hr>
+<ul>
+<li>
+<p><strong>use tool to calcualte CAN FD timing</strong><br>
+<a href="https://www.peak-system.com/Bit-Rate-Calculation-Tool.496.0.html?&amp;L=1">Bit-Rate-Calculation-Tool</a></p>
+</li>
+<li>
+<p><strong>use web site to calcualte CAN FD timing</strong><br>
+<a href="https://www.kvaser.cn/support/calculators/bit-timing-calculator-can-fd/">bit-timing-calculator-can-fd</a></p>
+</li>
+<li>
+<p><strong>Timing_setting_in_RH850</strong></p>
+</li>
+</ul>
+<span style="color:#FF0000">
+<b> 
+* NBRP[9:0] = DBRP[7:0] </b><br>
+<b> 
+* when TDCE enable , NBRP[9:0] and DBRP[7:0] must equal vaule of 1 or less
+</b><br><br>
+</span>
+<p><img src="img/RH850_CAN_TDC_2.jpg" alt=""></p>
+<p><a href="#article_top">back to top</a></p>
+<hr>
+<p><a href="https://github.com/released/Sample_Project_RH850_S1_CAN_FD_RX_Polling_No_Rule">Sample_Project_RH850_S1_CAN_FD_RX_Polling_No_Rule</a></p>
+<ul>
+<li>
+<p><strong>How_to_enable_TDC_in_RH850</strong></p>
+<ul>
+<li>need to set <mark><strong>TDCE</strong></mark> and <mark><strong>TDCOC</strong></mark></li>
+<li>need to set <mark><strong>TDCO[6:0]</strong></mark>
+<ul>
+<li>TDCO = SSP</li>
+</ul>
+</li>
+<li>add below code in <mark><strong>static void can_normal_mode_set(..)</strong></mark></li>
+</ul>
+</li>
+</ul>
+<pre data-role="codeBlock" data-info="c" class="language-c c"><code>    <span class="token function">CAN_REG_SET</span><span class="token punctuation">(</span>cst2<span class="token punctuation">[</span>channel<span class="token punctuation">]</span><span class="token punctuation">.</span>CxFDCFG<span class="token punctuation">.</span>UINT32<span class="token punctuation">,</span>CAN_REG_BIT9<span class="token punctuation">,</span>CAN_REG_LENGTH_1<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// TDCE = 1</span>
+    <span class="token function">CAN_REG_SET</span><span class="token punctuation">(</span>cst2<span class="token punctuation">[</span>channel<span class="token punctuation">]</span><span class="token punctuation">.</span>CxFDCFG<span class="token punctuation">.</span>UINT32<span class="token punctuation">,</span>CAN_REG_BIT8<span class="token punctuation">,</span>CAN_REG_LENGTH_1<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// TDCOC = 1</span>
+    <span class="token comment">//The SSP offset value = (set value of TDCO[6:0] bits + 1). </span>
+    <span class="token function">CAN_REG_SET</span><span class="token punctuation">(</span>cst2<span class="token punctuation">[</span>channel<span class="token punctuation">]</span><span class="token punctuation">.</span>CxFDCFG<span class="token punctuation">.</span>UINT32<span class="token punctuation">,</span>CAN_REG_BIT16<span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// TDCO[6:0] </span>
+</code></pre><p><img src="img/RH850_CAN_TDCE_1.jpg" alt=""></p>
+<ul>
+<li>Below is PCAN tool setting to test 500K/5M</li>
+</ul>
+<p><img src="img/RH850_CAN_TDCE_2.jpg" alt=""></p>
+<ul>
+<li>modify below code in <mark><strong>const CAN_BUS_PARAMETER_T can_bus_parameter_ch1</strong></mark></li>
+</ul>
+<pre data-role="codeBlock" data-info="c" class="language-c c"><code>    <span class="token punctuation">.</span>NBRP                   <span class="token operator">=</span> CAN_NBRP_1<span class="token punctuation">,</span>
+    <span class="token punctuation">.</span>NTSEG1                 <span class="token operator">=</span> CAN_NTSEG1_59TQ<span class="token punctuation">,</span>
+    <span class="token punctuation">.</span>NTSEG2                 <span class="token operator">=</span> CAN_NTSEG2_20TQ<span class="token punctuation">,</span>
+    <span class="token punctuation">.</span>NSJW                   <span class="token operator">=</span> CAN_NSJW_20TQ<span class="token punctuation">,</span>
+
+    <span class="token punctuation">.</span>DBRP                   <span class="token operator">=</span> CAN_DBRP_1<span class="token punctuation">,</span>
+    <span class="token punctuation">.</span>DTSEG1                 <span class="token operator">=</span> CAN_DTSEG1_5TQ<span class="token punctuation">,</span>
+    <span class="token punctuation">.</span>DTSEG2                 <span class="token operator">=</span> CAN_DTSEG2_2TQ<span class="token punctuation">,</span>
+    <span class="token punctuation">.</span>DSJW                   <span class="token operator">=</span> CAN_DSJW_2TQ<span class="token punctuation">,</span>
+
+</code></pre><pre data-role="codeBlock" data-info="" class="language-text"><code>    40MHz
+    nominal : 500k
+        sample rate : 75
+        pre-scale : 1
+        TSEG1 : 59
+        TSEG2 : 20
+        SJW : 20
+
+    data : 5M
+        sample rate : 75
+        pre-scale : 1
+        TSEG1 : 5
+        TSEG2 : 2
+        SJW : 5  
+        
+        SSP : 6
+
+</code></pre><p><a href="#article_top">back to top</a></p>
+<hr>
+<ul>
+<li><strong>other Nominal Data Bit timing 1</strong>
+<ul>
+<li>nominal : 500K , 75%</li>
+<li>data : 2M , 75%</li>
+</ul>
+</li>
+</ul>
+<pre data-role="codeBlock" data-info="c" class="language-c c"><code>    <span class="token punctuation">.</span>NBRP                   <span class="token operator">=</span> CAN_NBRP_1<span class="token punctuation">,</span>
+    <span class="token punctuation">.</span>NTSEG1                 <span class="token operator">=</span> CAN_NTSEG1_59TQ<span class="token punctuation">,</span>
+    <span class="token punctuation">.</span>NTSEG2                 <span class="token operator">=</span> CAN_NTSEG2_20TQ<span class="token punctuation">,</span>
+    <span class="token punctuation">.</span>NSJW                   <span class="token operator">=</span> CAN_NSJW_20TQ<span class="token punctuation">,</span>
+
+    <span class="token punctuation">.</span>DBRP                   <span class="token operator">=</span> CAN_DBRP_1<span class="token punctuation">,</span>
+    <span class="token punctuation">.</span>DTSEG1                 <span class="token operator">=</span> CAN_DTSEG1_14TQ<span class="token punctuation">,</span>
+    <span class="token punctuation">.</span>DTSEG2                 <span class="token operator">=</span> CAN_DTSEG2_5TQ<span class="token punctuation">,</span>
+    <span class="token punctuation">.</span>DSJW                   <span class="token operator">=</span> CAN_DSJW_5TQ<span class="token punctuation">,</span>
+</code></pre><pre data-role="codeBlock" data-info="" class="language-text"><code>    40MHz
+    nominal : 500k
+        sample rate : 75
+        pre-scale : 1
+        TSEG1 : 59
+        TSEG2 : 20
+        SJW : 20
+
+    data : 2M
+        sample rate : 75
+        pre-scale : 1
+        TSEG1 : 14
+        TSEG2 : 5
+        SJW : 5 
+
+</code></pre><p><a href="#article_top">back to top</a></p>
+<hr>
+<ul>
+<li><strong>other Nominal Data Bit timing 2</strong>
+<ul>
+<li>nominal : 500K , 80%</li>
+<li>data : 2M , 70%</li>
+</ul>
+</li>
+</ul>
+<pre data-role="codeBlock" data-info="c" class="language-c c"><code>    <span class="token punctuation">.</span>NBRP                   <span class="token operator">=</span> CAN_NBRP_1<span class="token punctuation">,</span>       <span class="token comment">//1U - 1U,</span>
+    <span class="token punctuation">.</span>NTSEG1                 <span class="token operator">=</span> CAN_NTSEG1_63TQ<span class="token punctuation">,</span>  <span class="token comment">//63U - 1U,</span>
+    <span class="token punctuation">.</span>NTSEG2                 <span class="token operator">=</span> CAN_NTSEG2_16TQ<span class="token punctuation">,</span>  <span class="token comment">//16U - 1U,</span>
+    <span class="token punctuation">.</span>NSJW                   <span class="token operator">=</span> CAN_NSJW_16TQ<span class="token punctuation">,</span>    <span class="token comment">//16U - 1U,</span>
+
+    <span class="token punctuation">.</span>DBRP                   <span class="token operator">=</span> CAN_DBRP_1<span class="token punctuation">,</span>       <span class="token comment">//1U - 1U,</span>
+    <span class="token punctuation">.</span>DTSEG1                 <span class="token operator">=</span> CAN_DTSEG1_13TQ<span class="token punctuation">,</span>  <span class="token comment">//13U - 1U,</span>
+    <span class="token punctuation">.</span>DTSEG2                 <span class="token operator">=</span> CAN_DTSEG2_6TQ<span class="token punctuation">,</span>   <span class="token comment">//6U - 1U,</span>
+    <span class="token punctuation">.</span>DSJW                   <span class="token operator">=</span> CAN_DSJW_6TQ<span class="token punctuation">,</span>     <span class="token comment">//6U - 1U,</span>
+</code></pre><pre data-role="codeBlock" data-info="" class="language-text"><code>    40MHz
+    nominal : 500k
+        sample rate : 80
+        pre-scale : 1
+        TSEG1 : 63
+        TSEG2 : 16
+        SJW : 16
+
+    data : 2M
+        sample rate : 70
+        pre-scale : 1
+        TSEG1 : 13
+        TSEG2 : 6
+        SJW : 6
+</code></pre><p><img src="img/RH850_CAN_TDCE_3.jpg" alt=""></p>
+<p><a href="#article_top">back to top</a></p>
+<hr>
+<ul>
+<li><strong>How to set CAN frame or CAN FD frame</strong>
+<ul>
+<li>modify CAN_FD_MODE_e mode to output classical CAN frame or CAN FD frame</li>
+</ul>
+</li>
+</ul>
+<pre data-role="codeBlock" data-info="c" class="language-c c"><code><span class="token keyword keyword-typedef">typedef</span> <span class="token keyword keyword-enum">enum</span>
+<span class="token punctuation">{</span>
+    CAN_FD_MIX_MODE<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>
+    CAN_FD_ONLY_MODE<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>
+    CAN_STANDARD_MODE<span class="token operator">=</span><span class="token number">2</span>
+<span class="token punctuation">}</span>CAN_FD_MODE_e<span class="token punctuation">;</span>
+
+</code></pre><p><img src="img/RH850_CAN_TDCE_4.jpg" alt=""></p>
+<p><a href="#article_top">back to top</a></p>
+<hr>
+<ul>
+<li><strong>Some example code</strong></li>
+</ul>
+<p><a href="https://github.com/released/Sample_Project_RH850_S1_CAN_FD_RX_Polling_No_Rule">Sample_Project_RH850_S1_CAN_FD_RX_Polling_No_Rule</a></p>
+<p><a href="https://github.com/released/Sample_Project_RH850_S1_CAN_FD_RX_Polling_With_Rule">Sample_Project_RH850_S1_CAN_FD_RX_Polling_With_Rule</a></p>
+<p><a href="https://github.com/released/Sample_Project_RH850_S1_CAN_FD_RX_Interrupt_No_Rule">Sample_Project_RH850_S1_CAN_FD_RX_Interrupt_No_Rule</a></p>
+<p><a href="https://github.com/released/https://github.com/released/Sample_Project_RH850_S1_CAN_FD_RX_Interrupt_With_Rule">Sample_Project_RH850_S1_CAN_FD_RX_Interrupt_With_Rule</a></p>
+<p><a href="https://github.com/released/RL78_F24_CAN_FD">RL78_F24_CAN_FD</a></p>
+<p><a href="https://github.com/released/RL78_F24_CAN">RL78_F24_CAN</a></p>
+<p><a href="https://github.com/released/RL78_F13_CAN">RL78_F13_CAN</a></p>
+<p><a href="#article_top">back to top</a></p>
 
       </div>
       
