@@ -200,6 +200,8 @@ DSJW[2:0] Bits Bits : 1 to 8 Tq
 [Sample_Project_RH850_S1_CAN_FD_RX_Polling_No_Rule](https://github.com/released/Sample_Project_RH850_S1_CAN_FD_RX_Polling_No_Rule)
 
 
+[Sample_Project_RH850_S1_CAN_FD_RX_Polling_No_Rule_5M](https://github.com/released/Sample_Project_RH850_S1_CAN_FD_RX_Polling_No_Rule_5M)
+
 
 * __How_to_enable_TDC_in_RH850__
 
