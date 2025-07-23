@@ -5,6 +5,9 @@
 
 # FAQ (Renesas)
 
+* [Knowledge Base in Renesas](#notice_Knowledge_Base)
+
+* [Quick link](#notice_quick_link)
 
 * [How to get RH850 RLIN3 (UART) lowest error rate](#calculate_uart_baud_rate)
 
@@ -13,6 +16,91 @@
 * [Notice about RH850/RL78 CAN](#notice_RH850_RL78_CAN)
 
 
+---
+
+<a id="notice_Knowledge_Base"></a>
+
+# Collect some Knowledge Base from Renesas
+
+[RL78 Replace an L Grade device with K Grade device](https://en.na4.teamsupport.com/knowledgeBase/21153498)
+
+[How can I issue a software reset on a RL78 device ?](https://en.na4.teamsupport.com/knowledgeBase/21633589)
+
+[RL78/F1x compatibility to ISO26262](https://en.na4.teamsupport.com/knowledgeBase/19957730)
+
+
+
+[back to top](#article_top)   
+
+
+---
+
+<a id="notice_quick_link"></a>
+
+# Some links for manual document
+
+[>>>Documentation & Downloads Search<<<](https://www.renesas.com/en/support/document-search?page=0)
+
+__Compilers__
+[CC-RL compilers user’s manual](https://www.renesas.com/en/document/mat/cc-rl-compiler-users-manual)
+
+[CC-RH Compiler User's Manual](https://www.renesas.com/document/mat/cc-rh-compiler-users-manual)
+
+[Renesas Compilers Professional Editions](https://www.renesas.com/document/apn/renesas-compilers-professional-editions)
+
+[How to Execute a Program in RAM(CC-RL)](https://www.renesas.com/document/mat/how-execute-program-ramcc-rl)
+
+__Core__
+[RL78 Family User's Manual: Software](https://www.renesas.com/document/mah/rl78-family-users-manual-software-rev230)
+
+[RH850/G3KH User's Manual: Software](https://www.renesas.com/en/document/mas/rh850g3kh-users-manual-software)
+
+[RH850G4MH User's Manual: Software](https://www.renesas.com/en/document/mas/rh850g4mh-users-manual-software)
+
+__Programming Techniques__
+
+[RL78 Family C compiler CC-RL Programming Techniques Rev.1.10](https://www.renesas.com/document/apn/rl78-family-c-compiler-cc-rl-programming-techniques-rev110)
+
+[Application Guide for the CC-RH V2 C Compiler for RH850 Devices: Programming Techniques](https://www.renesas.com/document/apn/application-guide-cc-rh-v2-c-compiler-rh850-devices-programming-techniques)
+
+[Application Guide for the CC-RH C Compiler for RH850 Devices: Programming Techniques](https://www.renesas.com/document/mat/application-guide-cc-rh-c-compiler-rh850-devices-programming-techniques)
+
+__Smart Configurator__
+[RL78 Smart Configurator User's Guide: CS+](https://www.renesas.com/en/document/man/rl78-smart-configurator-users-guide-cs)
+
+[RH850 Smart Configurator User's Guide: CS+](https://www.renesas.com/document/mat/rh850-smart-configurator-users-guide-cs)
+
+[RH850 Smart Configurator User's Guide: e² studio](https://www.renesas.com/document/mat/rh850-smart-configurator-users-guide-e-studio)
+
+__Boot/application__
+[RL78 Family C Compiler Package (CC-RL) How to Divide Boot and Flash Areas](https://www.renesas.com/document/mat/rl78-family-c-compiler-package-cc-rl-how-divide-boot-and-flash-areas)
+
+[RH850 Family C Compiler Package (CC-RH) How to Divide Boot and Flash Areas](https://www.renesas.com/document/apn/rh850-family-c-compiler-package-cc-rh-how-divide-boot-and-flash-areas)
+
+__CS+__
+[CS+ Integrated Development Environment User's Manual: CC-RL Build Tool Operation](https://www.renesas.com/document/mat/cs-integrated-development-environment-users-manual-cc-rl-build-tool-operation)
+
+[CS+ Integrated Development Environment User's Manual: CC-RH Build Tool Operation](https://www.renesas.com/document/mat/cs-integrated-development-environment-users-manual-cc-rh-build-tool-operation)
+
+__RL78 F23/F24__
+[RL78/F23, F24 Safety Function](https://www.renesas.com/document/apn/rl78f23-f24-safety-function-rev110)
+[RL78/F23, F24 Option Byte Setting](https://www.renesas.com/document/apn/rl78f23-f24-option-byte-setting-rev110)
+[RL78/F24 Guide for Engineer](https://www.renesas.com/document/gde/rl78f24-guide-engineer)
+[RL78/F23 Guide for Engineer](https://www.renesas.com/document/gde/rl78f23-guide-engineer)
+[RL78/F23, F24 Hardware Design Guide](https://www.renesas.com/document/apn/rl78f23-f24-hardware-design-guide-rev200)
+
+__RH850__
+[RH850/F1Kx, RH850/F1K Series Hardware Design Guide](https://www.renesas.com/document/apn/rh850f1kx-rh850f1k-series-hardware-design-guide)
+[RH850/F1Kx Hardware Design Guide](https://www.renesas.com/document/apn/rh850f1kx-rh850f1k-series-hardware-design-guide)
+
+__Product Part Number Guide__
+[RL78 Family Product Part Number Guide](https://www.renesas.com/document/gde/rl78-family-product-part-number-guide)
+[RH850 Family Product Part Number Guide](https://www.renesas.com/en/document/gde/rh850-family-product-part-number-guide)
+
+__Simplified IIC__
+[RL78/G23 Serial Array Unit (SAU) (EEPROM Control Using Simplified IIC)](https://www.renesas.com/document/apn/rl78g23-serial-array-unit-sau-eeprom-control-using-simplified-iic-rev100)
+
+[back to top](#article_top)   
 
 ---
 
