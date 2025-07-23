@@ -100,6 +100,11 @@ __Product Part Number Guide__
 __Simplified IIC__
 [RL78/G23 Serial Array Unit (SAU) (EEPROM Control Using Simplified IIC)](https://www.renesas.com/document/apn/rl78g23-serial-array-unit-sau-eeprom-control-using-simplified-iic-rev100)
 
+
+
+__CAN__
+[CAN Controller Usage: Applications and Frequently Asked Questions](https://www.renesas.com/en/document/apn/can-controller-usage-applications-and-frequently-asked-questions-rev203)
+
 [back to top](#article_top)   
 
 ---
