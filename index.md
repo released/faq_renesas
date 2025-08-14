@@ -89,6 +89,10 @@ __RL78 F23/F24__
 [RL78/F23 Guide for Engineer](https://www.renesas.com/document/gde/rl78f23-guide-engineer)
 [RL78/F23, F24 Hardware Design Guide](https://www.renesas.com/document/apn/rl78f23-f24-hardware-design-guide-rev200)
 
+__RL78 F1x__
+[RL78/F13, F14, F15 Option Byte Setting](https://www.renesas.com/document/apn/rl78f13-f14-f15-option-byte-setting-rev101)
+[RL78/F12 Option Byte Setting](https://www.renesas.com/document/apn/rl78f12-option-byte-setting-rev100)
+
 __RH850__
 [RH850/F1Kx, RH850/F1K Series Hardware Design Guide](https://www.renesas.com/document/apn/rh850f1kx-rh850f1k-series-hardware-design-guide)
 [RH850/F1Kx Hardware Design Guide](https://www.renesas.com/document/apn/rh850f1kx-rh850f1k-series-hardware-design-guide)
