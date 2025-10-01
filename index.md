@@ -489,6 +489,11 @@ single CH (CAN1 , CAN frame)
 multi CH (CAN1 , CAN4)
 [Sample_Project_RH850_S1_CAN_FD_MultiCH](https://github.com/released/Sample_Project_RH850_S1_CAN_FD_MultiCH)
 
+multi CH (CAN0 , CAN2)
+[Sample_Project_RH850_S1_CAN_FD_MultiCH_CAN0_CAN2](https://github.com/released/Sample_Project_RH850_S1_CAN_FD_MultiCH_CAN0_CAN2)
+
+multi CH (CAN0 , CAN2 , re-arrange driver structure , for easy enable multi channel)
+[Sample_Project_RH850_S1_CAN_FD_MultiCHv2](https://github.com/released/Sample_Project_RH850_S1_CAN_FD_MultiCHv2)
 
 
 ==__RL78__==
