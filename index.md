@@ -37,6 +37,17 @@
 
 <a id="notice_quick_link"></a>
 
+
+# Some common tool
+
+[CC-RL (RL78 compiler)](https://www.renesas.com/en/software-tool/c-compiler-package-rl78-family-cc-rl)
+
+[CS+ (RL78 IDE)](https://www.renesas.com/en/software-tool/cs)
+
+[E2 lite](https://www.renesas.com/en/software-tool/e2-emulator-lite-programming-function)
+
+[Renesas flash programmer](https://www.renesas.com/en/software-tool/renesas-flash-programmer-programming-gui)
+
 # Some links for manual document
 
 [>>>Documentation & Downloads Search<<<](https://www.renesas.com/en/support/document-search?page=0)
