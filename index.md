@@ -40,11 +40,29 @@
 
 # Some common tool
 
-[CC-RL (RL78 compiler)](https://www.renesas.com/en/software-tool/c-compiler-package-rl78-family-cc-rl)
+### IDE
 
-[CS+ (RL78 IDE)](https://www.renesas.com/en/software-tool/cs)
+[CS+ (IDE and Coding Tool)](https://www.renesas.com/en/software-tool/cs)
 
-[E2 lite](https://www.renesas.com/en/software-tool/e2-emulator-lite-programming-function)
+[e² studio (IDE and Coding Tool)](https://www.renesas.com/en/software-tool/e2-studio)
+
+### Compiler
+
+[C Compiler Package for RL78 Family [CC-RL]](https://www.renesas.com/en/software-tool/c-compiler-package-rl78-family-cc-rl)
+
+[C Compiler Package for RH850 Family [CC-RH]](https://www.renesas.com/en/software-tool/c-compiler-package-rh850-family-cc-rh)
+
+[Compiler Licenses](https://www.renesas.com/en/software-tool/compiler-licenses)
+
+### Emulator
+
+[E2 emulator](https://www.renesas.com/en/software-tool/e2-emulator-rte0t00020kce00000r)
+
+[E2 emulator Lite](https://www.renesas.com/en/software-tool/e2-emulator-lite-rte0t0002lkce00000r)
+
+[E1 emulator](https://www.renesas.com/en/software-tool/e1-emulator-r0e000010kce00-discontinued-product?srsltid=AfmBOoqJKznog1FmVJWPU_Tjsmq14wKJFkvDvX9xyrK_vsqT1W7NWS3t)
+
+### Flash programmer
 
 [Renesas flash programmer](https://www.renesas.com/en/software-tool/renesas-flash-programmer-programming-gui)
 
