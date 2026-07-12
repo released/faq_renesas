@@ -1,9 +1,22 @@
 
-[return to index](https://released.github.io/)
+[回到知識庫總索引](https://released.github.io/)
 
 <a id="article_top"></a>
 
 # FAQ (Renesas)
+
+> 彙整 Renesas 官方知識庫與常用工具入口，並整理 RH850 UART、RL78 PWM、RH850 / RL78 CAN 等常見計算與設定問題。套用數值前，請以目標 MCU 的 User's Manual 與實際 module clock 為準。
+
+## 問題定位路徑
+
+```mermaid
+flowchart LR
+    ISSUE["確認 MCU / Tool / Peripheral"] --> DOC["查 User's Manual 與官方 KB"]
+    DOC --> CLOCK["核對 Clock / Pin / Register"]
+    CLOCK --> CALC["重新計算 Baud / PWM / Bit Timing"]
+    CALC --> MEASURE["Debugger / Analyzer / Oscilloscope 驗證"]
+    MEASURE --> MINIMAL["以最小範例重現"]
+```
 
 * [Knowledge Base in Renesas](#notice_Knowledge_Base)
 
